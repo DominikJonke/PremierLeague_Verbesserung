@@ -1,5 +1,6 @@
 ﻿using PremierLeague.Wpf.Common.Contracts;
 using PremierLeague.Wpf.ViewModels;
+using PremierLeague.Wpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace PremierLeague.Wpf.Common
         null => throw new ArgumentNullException(nameof(viewModel)),
 
         MainViewModel _ => new MainWindow(),
+        AddGameViewModel _ => new AddGameWindow(),
 
         // default -> InvalidOperationException
         _ => throw new InvalidOperationException($"Unbekanntes ViewModel '{viewModel}'"),

@@ -1,4 +1,5 @@
-﻿using PremierLeague.Core.DataTransferObjects;
+﻿using PremierLeague.Core.Contracts;
+using PremierLeague.Core.DataTransferObjects;
 using PremierLeague.Persistence;
 using PremierLeague.Wpf.Common;
 using PremierLeague.Wpf.Common.Contracts;
@@ -14,6 +15,16 @@ namespace PremierLeague.Wpf.ViewModels
 {
   public class MainViewModel : BaseViewModel
   {
+        private ObservableCollection<TeamTableRowDto> _game;
+        public ObservableCollection<TeamTableRowDto> Game
+        {
+            get => _game;
+            set
+            {
+                _game = value;
+                OnPropertyChanged(nameof(Game));
+            }
+        }
     public MainViewModel(IWindowController windowController) : base(windowController)
     {
       LoadCommands();
@@ -24,7 +35,7 @@ namespace PremierLeague.Wpf.ViewModels
     /// </summary>
     private void LoadCommands()
     {
-      throw new NotImplementedException();
+      //throw new NotImplementedException();
     }
 
     /// <summary>
@@ -34,12 +45,18 @@ namespace PremierLeague.Wpf.ViewModels
     /// <returns></returns>
     private async Task LoadDataAsync()
     {
-      throw new NotImplementedException();
+            using IUnitOfWork uow = new UnitOfWork();
+            var games = await uow.Games.GetAllAsync();
+            Game = new ObservableCollection<TeamTableRowDto>();
+            foreach(var game in games)
+            {
+                Game.Add(game);
+            }
     }
 
     public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-      throw new NotImplementedException();
+            yield return ValidationResult.Success;
     }
 
     public static async Task<MainViewModel> CreateAsync(IWindowController windowController)
@@ -48,5 +65,26 @@ namespace PremierLeague.Wpf.ViewModels
       await viewModel.LoadDataAsync();
       return viewModel;
     }
+
+        private ICommand _cmdAddGame;
+        public ICommand CmdAddGame
+        {
+            get
+            {
+                if(_cmdAddGame == null)
+                {
+                    _cmdAddGame = new RelayCommand(
+                        execute: _ =>
+                        {
+                            Controller.ShowWindow(new AddGameViewModel(Controller), true);
+                            LoadDataAsync();
+                        },
+                        canExecute: _ => true
+                        );
+                }
+                return _cmdAddGame;
+            }
+            set => _cmdAddGame = value;
+        }
   }
 }

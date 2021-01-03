@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using PremierLeague.Core.DataTransferObjects;
 using PremierLeague.Core.Entities;
 
 namespace PremierLeague.Core.Contracts
@@ -7,5 +8,7 @@ namespace PremierLeague.Core.Contracts
     public interface IGameRepository
     {
         Task AddRangeAsync(IEnumerable<Game> games);
+        Task<IEnumerable<TeamTableRowDto>> GetAllAsync();
+        Task AddAsync(Game games);
     }
 }

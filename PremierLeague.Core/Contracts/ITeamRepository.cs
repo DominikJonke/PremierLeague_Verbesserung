@@ -7,5 +7,7 @@ namespace PremierLeague.Core.Contracts
   public interface ITeamRepository
   {
     Task AddRangeAsync(IEnumerable<Team> teams);
-  }
+        Task<IEnumerable<Team>> GetAllTeamsAsync();
+        Task<Team> GetById(int id);
+    }
 }

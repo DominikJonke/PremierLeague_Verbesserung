@@ -11,6 +11,30 @@
         WindowStyle="ThreeDBorderWindow" BorderThickness="2" 
         BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
         Title="Premierleague" Height="650" Width="750">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-   
+        <DataGrid x:Name="DataGridGame" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"
+                  ItemsSource="{Binding Game}" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Rank"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Name"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Matches"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Won"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Drawn"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Lost"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="+"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="-"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="+/-"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Points"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Command="{Binding CmdAddGame}" Margin="600 580 30 -55">Add Game</Button>
+
+    </Grid>
 </controls:MetroWindow>
