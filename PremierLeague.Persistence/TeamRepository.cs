@@ -15,6 +15,6 @@ namespace PremierLeague.Persistence
       _dbContext = dbContext;
     }
 
-    public Task AddRangeAsync(IEnumerable<Team> teams) => throw new NotImplementedException();
+    public async Task AddRangeAsync(IEnumerable<Team> teams) => await _dbContext.AddRangeAsync(teams);
   }
 }

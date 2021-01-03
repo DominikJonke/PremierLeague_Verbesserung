@@ -40,7 +40,7 @@ namespace PremierLeague.Persistence
           .Select(e => e.Entity);
       foreach (var entity in entities)
       {
-        await ValidateEntityAsync(entity);
+        //await ValidateEntityAsync(entity);
       }
       await _dbContext.SaveChangesAsync();
     }
