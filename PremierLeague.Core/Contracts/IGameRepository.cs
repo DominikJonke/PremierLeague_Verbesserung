@@ -9,6 +9,7 @@ namespace PremierLeague.Core.Contracts
     {
         Task AddRangeAsync(IEnumerable<Game> games);
         Task<IEnumerable<TeamTableRowDto>> GetAllAsync();
+        Task<IEnumerable<Game>> GetAllGamesAsync();
         Task AddAsync(Game games);
     }
 }

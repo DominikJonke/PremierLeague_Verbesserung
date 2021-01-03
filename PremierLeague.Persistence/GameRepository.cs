@@ -51,9 +51,9 @@ namespace PremierLeague.Persistence
             return _dbContext.Games.ToList();
         }
 
-        public async Task AddAsync(Game game)
+        public async Task AddAsync(Game games)
         {
-            await _dbContext.Games.AddAsync(game);
+            await _dbContext.Games.AddAsync(games);
         }
     }
 }

@@ -15,14 +15,14 @@ namespace PremierLeague.Wpf.ViewModels
 {
   public class MainViewModel : BaseViewModel
   {
-        private ObservableCollection<TeamTableRowDto> _game;
-        public ObservableCollection<TeamTableRowDto> Game
+        private ObservableCollection<TeamTableRowDto> _games;
+        public ObservableCollection<TeamTableRowDto> Games
         {
-            get => _game;
+            get => _games;
             set
             {
-                _game = value;
-                OnPropertyChanged(nameof(Game));
+                _games = value;
+                OnPropertyChanged(nameof(Games));
             }
         }
     public MainViewModel(IWindowController windowController) : base(windowController)
@@ -47,10 +47,10 @@ namespace PremierLeague.Wpf.ViewModels
     {
             using IUnitOfWork uow = new UnitOfWork();
             var games = await uow.Games.GetAllAsync();
-            Game = new ObservableCollection<TeamTableRowDto>();
+            Games = new ObservableCollection<TeamTableRowDto>();
             foreach(var game in games)
             {
-                Game.Add(game);
+                Games.Add(game);
             }
     }
 

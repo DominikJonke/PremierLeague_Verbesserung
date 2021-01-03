@@ -7,6 +7,51 @@
         mc:Ignorable="d"
         Title="AddGameWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="grdFields" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0">Round:</Label>
+            <TextBox Grid.Column="1" Grid.Row="0" Width="90" HorizontalAlignment="Left" Text="{Binding Path=Round, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,26" Grid.RowSpan="3">
+                <Label Content="Hometeam: " Margin="5" />
+            </StackPanel>
+            <ComboBox Grid.Row="2" Grid.Column="1" Width="200" HorizontalAlignment="Left" x:Name="ComboBoxHometeam" Margin="0,5,5,5" ItemsSource="{Binding HomeTeam}" SelectedItem="{Binding SelectedHomeTeam}"/>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,26" Grid.RowSpan="3">
+                <Label Content="Guestteam: " Margin="5" />
+            </StackPanel>
+            <ComboBox Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left" x:Name="ComboBoxGuestteam" Margin="0,5,5,5" ItemsSource="{Binding GuestTeam}" SelectedItem="{Binding SelectedGuestTeam}"/>
+
+
+            <Label Grid.Column="0" Grid.Row="4">Homegoals:</Label>
+            <TextBox Grid.Column="4" Grid.Row="4" Width="90" Margin="0,5,5,5" HorizontalAlignment="Left" Text="{Binding Path=HomeGoals, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <Label Grid.Column="0" Grid.Row="5">Guestgoals:</Label>
+            <TextBox Grid.Column="5" Grid.Row="5" Width="90" Margin="0,5,5,5" HorizontalAlignment="Left" Text="{Binding Path=GuestGoals, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Margin="5,5,0,0" Width="80" Command="{Binding CmdSave}">Save</Button>
+
+        </Grid>
     </Grid>
 </Window>

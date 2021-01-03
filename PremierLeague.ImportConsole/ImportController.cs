@@ -31,8 +31,7 @@ namespace PremierLeague.ImportConsole
                     GuestTeam = teams.Single(team => team.Name == game[2]),
                     HomeGoals = Convert.ToInt32(game[3]),
                     GuestGoals = Convert.ToInt32(game[4])
-                })
-                .ToArray();
+                }).ToArray();
 
             return games;
     }

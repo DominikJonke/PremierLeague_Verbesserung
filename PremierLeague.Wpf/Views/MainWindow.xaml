@@ -19,18 +19,18 @@
         </Grid.RowDefinitions>
 
         <DataGrid x:Name="DataGridGame" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False"
-                  ItemsSource="{Binding Game}" Grid.RowSpan="2">
+                  ItemsSource="{Binding Games}" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Rank"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Name"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Matches"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Won"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Drawn"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Lost"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="+"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="-"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="+/-"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Rank}" Header="Points"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Matches}" Header="Matches"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Won}" Header="Won"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Drawn}" Header="Drawn"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Lost}" Header="Lost"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Plus}" Header="+"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Minus}" Header="-"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=GoalDifference}" Header="+/-"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Points}" Header="Points"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

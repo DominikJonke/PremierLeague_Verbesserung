@@ -105,16 +105,35 @@ namespace PremierLeague.Wpf.ViewModels
                 Validate();
             }
         }
-        
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            if (Round < 1 && Round > 38)
+            {
+                yield return new ValidationResult("Round has to be between 1 and 38", new string[] { nameof(Round) });
+            }
+            if (SelectedGuestTeam == SelectedHomeTeam)
+            {
+                yield return new ValidationResult($"Hometeam is same as Guestteam", new string[] { nameof(HomeTeam) });
+
+            }
+            if (HomeGoals < 0)
+            {
+                yield return new ValidationResult("$Homegoals are < 0", new string[] { nameof(HomeGoals) });
+
+            }
+            if (GuestGoals < 0)
+            {
+                yield return new ValidationResult("$Guestgoals are < 0", new string[] { nameof(GuestGoals) });
+
+            }
         }
 
         public AddGameViewModel(IWindowController controller) : base(controller)
         {
             _controller = controller;
             LoadHomeTeams();
+            LoadGuestTeams();
         }
 
         public async Task LoadHomeTeams()
@@ -123,6 +142,14 @@ namespace PremierLeague.Wpf.ViewModels
             var homeTeams = await uow.Teams.GetAllTeamsAsync();
             HomeTeam = new ObservableCollection<Team>(homeTeams);
             _selectedHomeTeam = HomeTeam.First();
+        }
+
+        public async Task LoadGuestTeams()
+        {
+            using IUnitOfWork uow = new UnitOfWork();
+            var guestTeams = await uow.Teams.GetAllTeamsAsync();
+            GuestTeam = new ObservableCollection<Team>(guestTeams);
+            _selectedGuestTeam = GuestTeam.First();
         }
 
         private ICommand _cmdSave;
